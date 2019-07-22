@@ -6,47 +6,14 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Serial Comms Level Shifter"
-Date "2019-06-06"
-Rev "1.1"
+Date "2019-07-22"
+Rev "2.0"
 Comp "https://mansfield-devine.com/speculatrix/"
 Comment1 "Intended for use with SmartParallel board."
 Comment2 "Converting between 3V3 & 5v levels for TTL serial comms."
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L Level-Shifter-rescue:CONN_01X06-Level-Shifter-rescue P2
-U 1 1 5ADCD540
-P 7675 2200
-F 0 "P2" H 7675 2550 50  0000 C CNN
-F 1 "5V_CONN" V 7775 2200 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 7675 2200 50  0001 C CNN
-F 3 "" H 7675 2200 50  0000 C CNN
-	1    7675 2200
-	1    0    0    -1  
-$EndComp
-$Comp
-L speculatrix_power:LM1117 LM1
-U 1 1 5ADCD5C1
-P 5300 1450
-F 0 "LM1" H 5250 1750 60  0000 C CNN
-F 1 "LM1117" H 5250 1400 60  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-223" H 5300 1450 60  0001 C CNN
-F 3 "" H 5300 1450 60  0000 C CNN
-	1    5300 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L speculatrix_power:TXB0104PW IC1
-U 1 1 5ADCD97A
-P 5300 2350
-F 0 "IC1" H 5300 2950 60  0000 C CNN
-F 1 "TXB0104PW" H 5300 1950 60  0000 C CNN
-F 2 "Speculatrix_general:TSSOP-14_4.4x5mm_Pitch0.65mm_Pad0.35mm" H 5550 1950 60  0001 C CNN
-F 3 "" H 5550 1950 60  0000 C CNN
-	1    5300 2350
-	1    0    0    -1  
-$EndComp
 $Comp
 L Device:C C2
 U 1 1 5ADCD9A6
@@ -110,27 +77,16 @@ $EndComp
 Text GLabel 6100 1900 2    50   Input ~ 0
 5V
 Text GLabel 6400 2600 2    50   Input ~ 0
-5V
+3V3
 Wire Wire Line
 	5800 2600 5950 2600
 Wire Wire Line
 	6250 2600 6400 2600
-$Comp
-L Level-Shifter-rescue:CONN_01X06-Level-Shifter-rescue P1
-U 1 1 5ADCDD74
-P 3600 2200
-F 0 "P1" H 3600 2550 50  0000 C CNN
-F 1 "CONN_01X06" V 3700 2200 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 3600 2200 50  0001 C CNN
-F 3 "" H 3600 2200 50  0000 C CNN
-	1    3600 2200
-	-1   0    0    1   
-$EndComp
 Text GLabel 4400 1900 0    50   Input ~ 0
 3V3
 Text GLabel 3800 2450 2    50   Input ~ 0
 GND
-NoConn ~ 3800 2250
+NoConn ~ 3050 2250
 Text Label 3850 2350 0    50   ~ 0
 CTSL
 Text Label 3850 2050 0    50   ~ 0
@@ -159,17 +115,6 @@ Wire Wire Line
 	4700 2600 4700 3100
 Connection ~ 4700 3100
 $Comp
-L Level-Shifter-rescue:Led_Small-Level-Shifter-rescue D1
-U 1 1 5ADD89E2
-P 6900 2675
-F 0 "D1" H 6850 2800 50  0000 L CNN
-F 1 "Led_PWR" H 6725 2575 50  0000 L CNN
-F 2 "LEDs:LED_1206" V 6900 2675 50  0001 C CNN
-F 3 "" V 6900 2675 50  0000 C CNN
-	1    6900 2675
-	0    -1   -1   0   
-$EndComp
-$Comp
 L Device:R R2
 U 1 1 5ADD8A67
 P 6650 3100
@@ -181,32 +126,8 @@ F 3 "" H 6650 3100 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6900 2750 6900 2775
-Wire Wire Line
 	6900 3100 6800 3100
 Connection ~ 5900 3100
-$Comp
-L Level-Shifter-rescue:Led_Small-Level-Shifter-rescue D3
-U 1 1 5AF92CC9
-P 7300 3300
-F 0 "D3" H 7250 3425 50  0000 L CNN
-F 1 "Led_TX" H 7125 3200 50  0000 L CNN
-F 2 "LEDs:LED_1206" V 7300 3300 50  0001 C CNN
-F 3 "" V 7300 3300 50  0000 C CNN
-	1    7300 3300
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Level-Shifter-rescue:Led_Small-Level-Shifter-rescue D2
-U 1 1 5AF92D13
-P 7100 3050
-F 0 "D2" H 7050 3175 50  0000 L CNN
-F 1 "Led_RX" H 6925 2950 50  0000 L CNN
-F 2 "LEDs:LED_1206" V 7100 3050 50  0001 C CNN
-F 3 "" V 7100 3050 50  0000 C CNN
-	1    7100 3050
-	0    -1   -1   0   
-$EndComp
 $Comp
 L Device:R R4
 U 1 1 5AF92DF9
@@ -241,9 +162,9 @@ F 3 "" H 7200 4000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7300 3500 7300 3400
+	7300 3500 7300 3250
 Wire Wire Line
-	7100 3500 7100 3150
+	7100 3500 7100 3250
 Wire Wire Line
 	7300 3900 7300 3800
 Wire Wire Line
@@ -265,9 +186,6 @@ Wire Wire Line
 	5900 3100 6500 3100
 Wire Wire Line
 	7200 3900 7300 3900
-Connection ~ 6900 2775
-Wire Wire Line
-	6900 2775 6900 3100
 Wire Wire Line
 	6800 2250 6900 2250
 Wire Wire Line
@@ -281,27 +199,19 @@ Wire Wire Line
 	7225 1575 7225 2250
 Connection ~ 7225 2250
 Wire Wire Line
-	7225 2250 7475 2250
-Wire Wire Line
-	7475 2150 7300 2150
-Wire Wire Line
 	6525 2150 6525 2250
 Wire Wire Line
 	6525 2250 5800 2250
-Wire Wire Line
-	7475 2050 7100 2050
 Wire Wire Line
 	6450 2050 6450 2150
 Wire Wire Line
 	6450 2150 5800 2150
 Wire Wire Line
-	7475 1950 6375 1950
-Wire Wire Line
 	6375 1950 6375 2050
 Wire Wire Line
 	6375 2050 5800 2050
 Wire Wire Line
-	7300 3200 7300 2150
+	7300 2950 7300 2150
 Connection ~ 7300 2150
 Wire Wire Line
 	6525 2150 7300 2150
@@ -311,27 +221,17 @@ Connection ~ 7100 2050
 Wire Wire Line
 	7100 2050 6450 2050
 Wire Wire Line
-	3800 2350 4750 2350
-Wire Wire Line
 	4750 2050 4150 2050
 Wire Wire Line
 	4150 2050 4150 1950
-Wire Wire Line
-	4150 1950 3800 1950
 Wire Wire Line
 	4750 2150 4100 2150
 Wire Wire Line
 	4100 2150 4100 2050
 Wire Wire Line
-	4100 2050 3800 2050
-Wire Wire Line
 	4750 2250 4050 2250
 Wire Wire Line
 	4050 2250 4050 2150
-Wire Wire Line
-	4050 2150 3800 2150
-Wire Wire Line
-	5800 2350 7475 2350
 $Comp
 L power:GND #PWR0101
 U 1 1 5CFB243D
@@ -344,21 +244,7 @@ F 3 "" H 7475 2800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7475 2450 7475 2675
-$Comp
-L power:PWR_FLAG #FLG0101
-U 1 1 5CFB7978
-P 7600 2675
-F 0 "#FLG0101" H 7600 2750 50  0001 C CNN
-F 1 "PWR_FLAG" V 7600 2803 50  0000 L CNN
-F 2 "" H 7600 2675 50  0001 C CNN
-F 3 "~" H 7600 2675 50  0001 C CNN
-	1    7600 2675
-	0    1    1    0   
-$EndComp
-Wire Wire Line
 	7600 2675 7475 2675
-Connection ~ 7475 2675
 Wire Wire Line
 	7475 2675 7475 2800
 $Comp
@@ -375,4 +261,207 @@ $EndComp
 Wire Wire Line
 	4500 3275 4500 3100
 Connection ~ 4500 3100
+Wire Wire Line
+	6900 2875 6900 3100
+$Comp
+L Connector:Conn_01x06_Male J1
+U 1 1 5D3478C0
+P 2850 2150
+F 0 "J1" H 2958 2531 50  0000 C CNN
+F 1 "3V3" H 2958 2440 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 2850 2150 50  0001 C CNN
+F 3 "~" H 2850 2150 50  0001 C CNN
+	1    2850 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x06_Male J2
+U 1 1 5D34A5F6
+P 9075 2250
+F 0 "J2" H 9047 2132 50  0000 R CNN
+F 1 "5V" H 9047 2223 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 9075 2250 50  0001 C CNN
+F 3 "~" H 9075 2250 50  0001 C CNN
+	1    9075 2250
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D1
+U 1 1 5D34F47E
+P 6900 2725
+F 0 "D1" V 6925 2900 50  0000 R CNN
+F 1 "LED" V 6825 2950 50  0000 R CNN
+F 2 "LEDs:LED_1206" H 6900 2725 50  0001 C CNN
+F 3 "~" H 6900 2725 50  0001 C CNN
+	1    6900 2725
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D2
+U 1 1 5D352BFF
+P 7100 3100
+F 0 "D2" V 6975 3225 50  0000 R CNN
+F 1 "LED" V 6900 3300 50  0000 R CNN
+F 2 "LEDs:LED_1206" H 7100 3100 50  0001 C CNN
+F 3 "~" H 7100 3100 50  0001 C CNN
+	1    7100 3100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D3
+U 1 1 5D3539F8
+P 7300 3100
+F 0 "D3" V 7200 2975 50  0000 R CNN
+F 1 "LED" V 7100 2975 50  0000 R CNN
+F 2 "LEDs:LED_1206" H 7300 3100 50  0001 C CNN
+F 3 "~" H 7300 3100 50  0001 C CNN
+	1    7300 3100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L speculatrix_power:LM1117 LM1
+U 1 1 5D349286
+P 5300 1450
+F 0 "LM1" H 5225 1897 60  0000 C CNN
+F 1 "LM1117" H 5225 1791 60  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-223" H 5300 1450 60  0001 C CNN
+F 3 "" H 5300 1450 60  0000 C CNN
+	1    5300 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L speculatrix_power:TXB0104D_PW IC1
+U 1 1 5D349C51
+P 5300 2350
+F 0 "IC1" H 5275 3087 60  0000 C CNN
+F 1 "TXB0104D_PW" H 5275 2981 60  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 5550 1950 60  0001 C CNN
+F 3 "" H 5550 1950 60  0000 C CNN
+	1    5300 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 5CFB7978
+P 7600 2675
+F 0 "#FLG0101" H 7600 2750 50  0001 C CNN
+F 1 "PWR_FLAG" V 7600 2803 50  0000 L CNN
+F 2 "" H 7600 2675 50  0001 C CNN
+F 3 "~" H 7600 2675 50  0001 C CNN
+	1    7600 2675
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7475 2450 7475 2675
+Connection ~ 7475 2675
+$Comp
+L Connector:Conn_01x06_Male J5
+U 1 1 5D3505EC
+P 8400 2750
+F 0 "J5" V 8554 2362 50  0000 R CNN
+F 1 "5V_test" V 8463 2362 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 8400 2750 50  0001 C CNN
+F 3 "~" H 8400 2750 50  0001 C CNN
+	1    8400 2750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3575 2350 4750 2350
+Wire Wire Line
+	3050 2350 3575 2350
+Connection ~ 3575 2350
+Wire Wire Line
+	3575 2600 3575 2350
+Wire Wire Line
+	3675 2450 3800 2450
+Wire Wire Line
+	3050 2450 3675 2450
+Connection ~ 3675 2450
+Wire Wire Line
+	3675 2600 3675 2450
+$Comp
+L Connector:Conn_01x02_Male J4
+U 1 1 5D35A966
+P 3575 2800
+F 0 "J4" V 3729 2612 50  0000 R CNN
+F 1 "3V3_test2" V 3500 2825 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 3575 2800 50  0001 C CNN
+F 3 "~" H 3575 2800 50  0001 C CNN
+	1    3575 2800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3375 2150 3050 2150
+Wire Wire Line
+	4050 2150 3375 2150
+Connection ~ 3375 2150
+Wire Wire Line
+	3375 2600 3375 2150
+Wire Wire Line
+	3275 2050 3050 2050
+Wire Wire Line
+	4100 2050 3275 2050
+Connection ~ 3275 2050
+Wire Wire Line
+	3275 2600 3275 2050
+Wire Wire Line
+	3175 1950 3050 1950
+Wire Wire Line
+	4150 1950 3175 1950
+Connection ~ 3175 1950
+Wire Wire Line
+	3175 2600 3175 1950
+$Comp
+L Connector:Conn_01x03_Male J3
+U 1 1 5D35B94D
+P 3275 2800
+F 0 "J3" V 3425 3100 50  0000 R CNN
+F 1 "3V3_test1" V 3200 3225 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 3275 2800 50  0001 C CNN
+F 3 "~" H 3275 2800 50  0001 C CNN
+	1    3275 2800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6375 1950 8700 1950
+Wire Wire Line
+	7100 2050 8600 2050
+Wire Wire Line
+	7300 2150 8500 2150
+Wire Wire Line
+	7225 2250 8400 2250
+Wire Wire Line
+	5800 2350 8300 2350
+Wire Wire Line
+	7475 2450 8200 2450
+Wire Wire Line
+	8200 2550 8200 2450
+Connection ~ 8200 2450
+Wire Wire Line
+	8200 2450 8875 2450
+Wire Wire Line
+	8300 2550 8300 2350
+Connection ~ 8300 2350
+Wire Wire Line
+	8300 2350 8875 2350
+Wire Wire Line
+	8400 2550 8400 2250
+Connection ~ 8400 2250
+Wire Wire Line
+	8400 2250 8875 2250
+Wire Wire Line
+	8500 2550 8500 2150
+Connection ~ 8500 2150
+Wire Wire Line
+	8500 2150 8875 2150
+Wire Wire Line
+	8600 2550 8600 2050
+Connection ~ 8600 2050
+Wire Wire Line
+	8600 2050 8875 2050
+Wire Wire Line
+	8700 2550 8700 1950
+Connection ~ 8700 1950
+Wire Wire Line
+	8700 1950 8875 1950
 $EndSCHEMATC
